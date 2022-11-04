@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Syed Muhammad Usman\\.nuget\\packages\\": {}
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FAST\\IPT\\LMS\\LMS\\LMS.csproj",
+      "projectUniqueName": "E:\\dotnet work\\LMS WEB UI\\LMS-UI\\LMS\\LMS.csproj",
       "projectName": "LMS",
-      "projectPath": "D:\\FAST\\IPT\\LMS\\LMS\\LMS.csproj",
-      "packagesPath": "C:\\Users\\Syed Muhammad Usman\\.nuget\\packages\\",
-      "outputPath": "D:\\FAST\\IPT\\LMS\\LMS\\obj\\",
+      "projectPath": "E:\\dotnet work\\LMS WEB UI\\LMS-UI\\LMS\\LMS.csproj",
+      "packagesPath": "C:\\Users\\DARK VADER\\.nuget\\packages\\",
+      "outputPath": "E:\\dotnet work\\LMS WEB UI\\LMS-UI\\LMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Syed Muhammad Usman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DARK VADER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

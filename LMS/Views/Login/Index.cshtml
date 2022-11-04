@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login Page";
+    bool showAlert = (ViewData["showAlert"] != null) ? true : false;
 }
 <!doctype html>
 <html lang="en">
@@ -85,26 +86,31 @@
 <body class="text-center">
 
     <main class="form-signin w-50 m-auto">
-        <form action="/Home">
-            <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/en/e/e4/National_University_of_Computer_and_Emerging_Sciences_logo.png" alt="" width="240" height="240">
+          <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/en/e/e4/National_University_of_Computer_and_Emerging_Sciences_logo.png" alt="" width="240" height="240">
             <h1 class="jumbotron-heading">Welcome To Learning Management System (LMS)</h1>
 
-            <div class="form-floating" style="margin-bottom:20px">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-            </div>
-            <div class="checkbox mb-3">
+        <form method="POST" action="/Login/login">
+          
+            <label for="floatingInput">Email address</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+
+            <label for="floatingPassword">Password</label>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+           
+@*            <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
-            </div>
-            <button class="w-50 btn btn-lg btn-primary" type="submit">Login</button>
+            </div>*@
+            <input class="w-50 btn btn-lg btn-primary" type="submit"></input>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
         </form>
+    
+        @if (showAlert) { 
+            <div class="alert alert-danger" role="alert">
+                Incorrect username or Password
+            </div>
+        }
     </main>
 
 

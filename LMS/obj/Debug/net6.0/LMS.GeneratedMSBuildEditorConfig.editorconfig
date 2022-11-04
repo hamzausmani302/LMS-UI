@@ -8,45 +8,45 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LMS
 build_property.RootNamespace = LMS
-build_property.ProjectDir = D:\FAST\IPT\LMS\LMS\
+build_property.ProjectDir = E:\dotnet work\LMS WEB UI\LMS-UI\LMS\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\FAST\IPT\LMS\LMS
+build_property.MSBuildProjectDirectory = E:\dotnet work\LMS WEB UI\LMS-UI\LMS
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Feed/Feed.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Feed/Feed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZFxGZWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Home/Index.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Home/Privacy.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Login/Index.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Shared/Error.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/_ViewImports.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/_ViewStart.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FAST/IPT/LMS/LMS/Views/Shared/_Layout.cshtml]
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-oaye5qotgs
