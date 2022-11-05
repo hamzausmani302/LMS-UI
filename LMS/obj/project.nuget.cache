@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KdEKpwXMleG5ee5zwBJ/PnvCb1msHjYuHUT1QWaFBe83DvmvIMy4QnDeWCJAzVXNDcJeA3YoXrKA6Jv8lWUN4g==",
+  "dgSpecHash": "yIB3qbpTbLGEvzGiFo44UMUGlKdE3JeFOYvfxuj4sl6uuU27nmylCH9XegL4VvkimiyIspMBCD+On3g7Y5hL/A==",
   "success": true,
-  "projectFilePath": "D:\\FAST\\IPT\\LMS\\LMS\\LMS.csproj",
+  "projectFilePath": "E:\\dotnet work\\LMS WEB UI\\LMS-UI\\LMS\\LMS.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
