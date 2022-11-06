@@ -1,7 +1,19 @@
+using LMS.Services.Announcements;
+using LMS.Services.Login;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<ILoginService, LoginService>();
+
+
+builder.Services.AddSingleton<IAnnouncementService , AnnouncementService>();
+builder.Services.AddControllers().AddJsonOptions(opt => {
+    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 var app = builder.Build();
 
@@ -22,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}");
 
 app.Run();
