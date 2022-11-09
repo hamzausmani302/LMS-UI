@@ -5,7 +5,7 @@
         public static string apiUrl = "https://localhost:7064";
         public static string liveUrl = "https://ipt-lms-1.herokuapp.com";
 
-        public static string urlToConsume = apiUrl;
+        public static string urlToConsume = liveUrl;
         public static string userLoginUrl = $"{urlToConsume}/api/user/Users/Login";
         public static string teacherLoginUrl = $"{urlToConsume}/api/teacher/Teacher/Login";
 
