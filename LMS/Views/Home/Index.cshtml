@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+   List<Class> data= (List<Class>)ViewBag.Class;
 }
 
 <!doctype html>
@@ -87,23 +88,31 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          @{for(int i=0; i<9;i++)
-{
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU" alt="" width="410" height="225">
+          @*<h1>@data[0].Course.CourseName</h1>*@
+          @{foreach(Class card in data)
+{           
+                                            <div class="col">
+                                                <div class="card shadow-sm">
+                                                    <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU" alt="" width="410" height="225">
 
-                        <div class="card-body">
-                            <h3>Information Security</h3>
-                            <p class="card-text">Dr. Nadeem Kafi</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                                    <div class="card-body">
+                                        <h3>@card.Course.CourseName</h3>
+                                        <p class="card-text">@card.Instructor.Name</p>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="btn-group">
+                                                <div class="btn-group">
+                                                    @Html.ActionLink("View"
+                                            ,"Index"
+                                            ,"Feed"
+                                            , new {id=card.Id}
+                                            ,new {@class="btn btn-sm btn-outline-secondary"}
+                                            )
+                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 }
 }  
     </div>

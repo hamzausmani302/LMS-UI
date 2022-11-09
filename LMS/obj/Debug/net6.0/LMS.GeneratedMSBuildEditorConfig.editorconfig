@@ -15,8 +15,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\dotnet work\LMS WEB UI\LMS-UI\LMS
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Feed/Feed.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZFxGZWVkLmNzaHRtbA==
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Feed/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Home/Index.cshtml]
@@ -31,12 +31,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Login/TeacherIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cVGVhY2hlckluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/StartPage/StartPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhcnRQYWdlXFN0YXJ0UGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/dotnet work/LMS WEB UI/LMS-UI/LMS/Views/_ViewImports.cshtml]

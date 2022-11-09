@@ -29,5 +29,26 @@ namespace LMS.Services.Login
             }
             
         }
+
+
+
+        public async Task<HttpResponseMessage> teacherLogin(AuthenticateRequest req)
+        {
+            try
+            {
+                string url = GlobalInfo.teacherLoginUrl;
+                
+                HttpResponseMessage response = await _httpClient.PostAsJsonAsync(url, new AuthenticateRequest() { Username = req.Username, Password = req.Password });
+                Console.WriteLine(response.Content.ToString());
+                return response;
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+                return null;
+            }
+
+        }
+
     }
 }
