@@ -17,9 +17,9 @@ namespace LMS.Models
 
         public string? PasswordHash { get; set; }
 
-        public FacultyType FacultyType { get; set; }
+        public string FacultyType { get; set; }
 
 
-        public  List<Classes> InstructorClasses { get; set; }
+        public  List<Class> InstructorClasses { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace LMS.Models
         public int AnnouncementId { get; set; }
      
         public int ClassesId { get; set; }
-        //public virtual Classes Classes { get; set; }        //Navigation attributes
+        public virtual Class Classes { get; set; }        //Navigation attributes
 
        
         public string? Description { get; set; }

@@ -22,11 +22,11 @@ namespace LMS.Models
        
         public int CreditHours { get; set; }
 
-        public CourseType courseType { get; set; }
+        public string courseType { get; set; }
 
         
 
-        public virtual List<Classes>? Classes { get; set; }
+        public virtual List<Class>? Classes { get; set; }
 
 
         //public List<Instructor_Course> InstructorCourses { get; set; }

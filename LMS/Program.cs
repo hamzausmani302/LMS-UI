@@ -1,4 +1,5 @@
 using LMS.Services.Announcements;
+using LMS.Services.ClassesService;
 using LMS.Services.Login;
 using System.Text.Json.Serialization;
 
@@ -10,8 +11,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ILoginService, LoginService>();
 
 
-builder.Services.AddSingleton<IAnnouncementService , AnnouncementService>();
-builder.Services.AddControllers().AddJsonOptions(opt => {
+builder.Services.AddSingleton<IClassService, ClassService>();
+builder.Services.AddSingleton<IAnnouncementService, AnnouncementService>();
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
     opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
