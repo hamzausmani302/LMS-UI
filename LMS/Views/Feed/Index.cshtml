@@ -192,6 +192,27 @@
                 <div class="d-flex justify-content-between align-items-center">
                 </div>
             </div>
+            <div class="container">
+                <form method="POST" action="/upload/1" enctype="multipart/form-data">
+                    <label  for="title">TITLE</label>
+                    <input type="text" name="title"/>
+                    <br />
+                    <label for="description">Description</label>
+                    <input type="text" name="description" />
+                    <br />
+                    <label for="announcementType">Type of Announcement</label>
+                    <input type="text" name="announcementType" />
+                    <br />
+                    <label for="dueDate">DueDate</label>
+                    <input type="date" name="dueDate" />
+                    <br />
+
+                    <label title="file upload : " for="fileToUpload" />
+                    <input type="file" name="fileToUpload" id="fileToUpload" />
+                    <input  type="submit"/>
+                </form>
+
+            </div>
             <div class="social-footer"></div>
             @{
                 for (int i = 0; i < announcements.Count; i++)

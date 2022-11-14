@@ -63,8 +63,11 @@ namespace LMS.Controllers
             }
             var res = await _classService.GetClasses(tokenvalue);
             Console.WriteLine($"couynt = {res.Count} info = {res[0].Id}");
-            ViewBag.Class = res;
-            
+            if (res != null) {
+                ViewBag.Class = res;
+
+            }
+
 
             return View(Path.Combine("/", "Views", "Home", "Index.cshtml"));
         }
