@@ -2,9 +2,20 @@
 using LMS.Services.Announcements;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NuGet.Common;
+using NuGet.Protocol.Plugins;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.IO;
+using LMS.DTOS.FileDto;
+using LMS.DTOS.Announcements;
 
 namespace LMS.Controllers
 {
+
+  
+
     public class FeedController : Controller
     {
 
@@ -12,6 +23,35 @@ namespace LMS.Controllers
         public FeedController(IAnnouncementService announcementService) {
             this.announcementService = announcementService;
         }
+
+        [HttpPost("upload/{id}")]
+        public async Task<IActionResult> TestFileUpload(string id, [FromForm] AddAnnouncementDTO dto,  [FromForm] List<IFormFile> fileToUpload  ) {
+            HttpClient client = new HttpClient();
+
+            AddAnnouncementDTO announcement = new AddAnnouncementDTO()
+            {
+                title = dto.title,
+                description = dto.description,
+                announcementType = dto.announcementType,
+                dueDate = dto.dueDate,
+                attachedFiles = new List<FileDTO>()
+
+            };
+            foreach (IFormFile file in fileToUpload) {
+                MemoryStream stream = new MemoryStream();
+                file.CopyTo(stream);
+
+                announcement.attachedFiles.Add(new FileDTO() { FileName= file.FileName , MimeType = file.ContentType , Data= stream.ToArray() });
+
+            }
+
+            HttpResponseMessage response =  await client.PostAsJsonAsync(GlobalInfo.addAnnouncementUrl.Replace("[id]", id) , announcement);
+
+
+            return Ok(response);
+        }
+
+
         [HttpGet("[controller]/Feed/{id:int}")]
         public async Task<IActionResult> Index(int id)
         {
