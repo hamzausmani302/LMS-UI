@@ -18,5 +18,13 @@
 
         public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/web/class/[id]";
 
+        public static string addSubmissionFileUrl = $"{urlToConsume}/api/user/Users/upload/assignment/[id]";
+
+        public static string getSubmissionFileUrl = $"{urlToConsume}/api/user/Users/assignments/[id]";
+
+
+
+        public static string fileDownloadPath = $"{urlToConsume}/Files/[filename]";
+
     }
 }
