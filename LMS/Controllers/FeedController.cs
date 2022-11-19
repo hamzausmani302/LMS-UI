@@ -46,9 +46,14 @@ namespace LMS.Controllers
             }
 
             HttpResponseMessage response =  await client.PostAsJsonAsync(GlobalInfo.addAnnouncementUrl.Replace("[id]", id) , announcement);
+            if (!response.IsSuccessStatusCode) {
+                return new BadRequestResult();
+            }
 
 
-            return Ok(response);
+
+            return Redirect( $"/Feed/Feed/{id}" );
+
         }
 
 
