@@ -12,7 +12,10 @@
 
         public static string getAnnouncementUrl = $"{urlToConsume}/api/user/Users/annoucements/class/[id]";
         public static string getAnnouncementTeacherUrl = $"{urlToConsume}/api/teacher/Teacher/annoucements/class/[id]";
-        
+        //public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/announcement/add/[id]";
+        //public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/class/[id]";
+        public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/web/class/[id]";
+
         public static string getClassUrl = $"{urlToConsume}/api/user/Users/classes";
         public static string getClassTeacherUrl = $"{urlToConsume}/api/teacher/Teacher/classes";
 

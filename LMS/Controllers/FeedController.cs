@@ -86,6 +86,7 @@ namespace LMS.Controllers
 
                 Console.WriteLine(announcements.Count);
 
+                ViewBag.ClassID = id;
                 ViewBag.Announcements = announcements;
             /*}
             catch (Exception e) {

@@ -1,7 +1,7 @@
-﻿using LMS.DTOS.Announcements;
+using LMS.DTOS.Announcements;
 using LMS.Helpers.Exceptions;
 using LMS.Services.Announcements;
-using LMS.DTOS.Announcements;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 
@@ -10,30 +10,32 @@ namespace LMS.Controllers
     public class AssignmentController : Controller
     {
         private readonly IAnnouncementService announcementService;
-        public AssignmentController(IAnnouncementService a_service) {
-            
+        public AssignmentController(IAnnouncementService a_service)
+        {
+
             announcementService = a_service;
-            
+
         }
 
-        public async  Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
-            if (id ==0) {
+            if (id == 0)
+            {
                 return new BadRequestResult();
             }
             Console.WriteLine(id);
 
 
             string token = Request.Cookies["token"] as string;
-            Console.WriteLine("t"+token);
+            Console.WriteLine("t" + token);
             //fetch all the submitted assignments of the user //files
-            List<AssignmentFilesDTO> files =  await announcementService.GetAssignmentFilesDTO(id , token);
-            
+            List<AssignmentFilesDTO> files = await announcementService.GetAssignmentFilesDTO(id, token);
 
-            
+
+
 
             ViewData["announcementId"] = id;
-            string status = (files == null || files.Count == 0) ?  "Due" : "Submitted";
+            string status = (files == null || files.Count == 0) ? "Due" : "Submitted";
 
             ViewData["status"] = status;
 
@@ -44,21 +46,23 @@ namespace LMS.Controllers
 
 
         [HttpPost("[controller]/upload/{id}")]
-        public async  Task<IActionResult> submitFile(string id , [FromForm] List<IFormFile> assignmentFiles) {
+        public async Task<IActionResult> submitFile(string id, [FromForm] List<IFormFile> assignmentFiles)
+        {
             Console.Write(id);
-            bool isNumber = int.TryParse(id , out int aid);
-            if (!isNumber) {
+            bool isNumber = int.TryParse(id, out int aid);
+            if (!isNumber)
+            {
                 return new NotFoundResult();
             }
             string token = Request.Cookies["token"];
 
-            var response = await announcementService.SubmitAssignmentFile(aid, assignmentFiles , token);
+            var response = await announcementService.SubmitAssignmentFile(aid, assignmentFiles, token);
 
-            
+
             Console.WriteLine(response.Content.ToString());
-/*            if (!response.IsSuccessStatusCode) {
-                throw new APIError("Error occured");
-*/       //     }
+            /*            if (!response.IsSuccessStatusCode) {
+                            throw new APIError("Error occured");
+            */       //     }
 
             string jsonResponse = await response.Content.ReadAsStringAsync();
 
