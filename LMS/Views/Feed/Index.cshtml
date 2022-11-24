@@ -185,6 +185,28 @@
         background: #ffffff;
         padding: 10px 15px;
     }
+
+    .button-34 {
+        background: #5E5DF0;
+        border-radius: 999px;
+        box-shadow: #5E5DF0 0 10px 20px -10px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        opacity: 1;
+        outline: 0 solid transparent;
+        padding: 8px 18px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: fit-content;
+        word-break: break-word;
+        border: 0;
+    }
 </style>
 <div class="container">
     <div class="col-md-7">
@@ -193,34 +215,22 @@
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU"
                 alt="" width="740" height="300">
             <div class="card-body">
-                <h3>Information Security</h3>
-                <a href="@Url.Action("Index", "Announcement",new {id=classID},"https")" class="btn btn-primary">
-                    <span>
-                        <strong>Add Announcement</strong>
-                    </span>
-                </a>
-                <div class="d-flex justify-content-between align-items-center">
+                @*<h2 class="align-items-center d-flex justify-content-center">Information Security</h2>*@
+                <h1>Information Security</h1>
+               
+                <div class="d-flex justify-content-between align-items-center" style="margin-top:40px">
+                    <a href="@Url.Action("Index", "Announcement",new {id=classID},"https")" class="btn button-34">
+                        <span>
+                            <strong>Add Announcement</strong>
+                        </span>
+                    </a>
+                    <a href="@Url.Action("Index", "UserList",new {id=classID},"https")" class="btn button-34">
+                        <span>
+                            <strong>People</strong>
+                        </span>
+                    </a>
                 </div>
             </div>
-            <div class="container">
-                <form method="POST" action="/upload/1" enctype="multipart/form-data">
-                    <label for="title">TITLE</label>
-                    <input type="text" name="title" />
-                    <br />
-                    <label for="description">Description</label>
-                    <input type="text" name="description" />
-                    <br />
-                    <label for="announcementType">Type of Announcement</label>
-                    <input type="text" name="announcementType" />
-                    <br />
-                    <label for="dueDate">DueDate</label>
-                    <input type="date" name="dueDate" />
-                    <br />
-
-                    <label title="file upload : " for="fileToUpload" />
-                    <input type="file" name="fileToUpload" id="fileToUpload" />
-                    <input type="submit" />
-                </form>
 
             </div>
             <div class="social-footer"></div>

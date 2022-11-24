@@ -7,5 +7,6 @@ namespace LMS.Services.ClassesService
     {
         
         public Task<List<Class>> GetClasses(string tokenvalue , bool isUser = true);
+        public Task<List<UserDTO>> GetUsers(string tokenvalue, int classId);
     }
 }

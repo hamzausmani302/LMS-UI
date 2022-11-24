@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SEM7\\IPT\\LMS-UI2\\LMS\\LMS.csproj": {}
+    "D:\\SEM7\\IPT\\LMS-UI3\\LMS\\LMS.csproj": {}
   },
   "projects": {
-    "D:\\SEM7\\IPT\\LMS-UI2\\LMS\\LMS.csproj": {
+    "D:\\SEM7\\IPT\\LMS-UI3\\LMS\\LMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SEM7\\IPT\\LMS-UI2\\LMS\\LMS.csproj",
+        "projectUniqueName": "D:\\SEM7\\IPT\\LMS-UI3\\LMS\\LMS.csproj",
         "projectName": "LMS",
-        "projectPath": "D:\\SEM7\\IPT\\LMS-UI2\\LMS\\LMS.csproj",
+        "projectPath": "D:\\SEM7\\IPT\\LMS-UI3\\LMS\\LMS.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\SEM7\\IPT\\LMS-UI2\\LMS\\obj\\",
+        "outputPath": "D:\\SEM7\\IPT\\LMS-UI3\\LMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
