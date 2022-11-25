@@ -1,4 +1,5 @@
-﻿using LMS.DTOS.Announcements;
+﻿using LMS.Authorization;
+using LMS.DTOS.Announcements;
 using LMS.DTOS.FileDto;
 using LMS.Models;
 using LMS.Services.Announcements;
@@ -18,6 +19,8 @@ namespace LMS.Controllers
         {
             this.announcementService = announcementService;
         }
+
+        [Authorize]
         [HttpGet("[controller]/Announcement/{id:int}")]
         
         public IActionResult Index(int id)
@@ -25,7 +28,7 @@ namespace LMS.Controllers
             Console.WriteLine($"classID {id}");
             return View();
         }
-
+        [Authorize]
         [HttpPost("/teacher/announcement/{id}")]
         //[ValidateAntiForgeryToken]
         public IActionResult addAnnouncement(string id, [FromForm] AddAnnouncementDTO dto, [FromForm] List<IFormFile> fileToUpload)
@@ -61,7 +64,7 @@ namespace LMS.Controllers
             Console.WriteLine(announcementService.addAnnouncementsOfClassAsync(id, token, announcement, fileToUpload));
 
 
-            return Ok();
+            return Redirect($"/Feed/feed/{id}");
         }
 
     }

@@ -35,9 +35,9 @@ namespace LMS.Services.Announcements
             }
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            httpClient.DefaultRequestHeaders
+           /* httpClient.DefaultRequestHeaders
       .Accept
-      .Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+      .Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));*/
 
             return await httpClient.PostAsJsonAsync(url, new SubmissionFilesDTO() { fileToUpload = fileDTOs });
 
@@ -76,25 +76,7 @@ namespace LMS.Services.Announcements
         }
         public async Task<bool> addAnnouncementsOfClassAsync(string id, string token, AddAnnouncementDTO dto, List<IFormFile> fileToUpload)
         {
-            //HttpClient client = new HttpClient();
-
-            //AddAnnouncementDTO announcement = new AddAnnouncementDTO()
-            //{
-            //    title = dto.title,
-            //    description = dto.description,
-            //    announcementType = dto.announcementType,
-            //    dueDate = dto.dueDate,
-            //    attachedFiles = new List<FileDTO>()
-
-            //};
-            //foreach (IFormFile file in fileToUpload)
-            //{
-            //    MemoryStream stream = new MemoryStream();
-            //    file.CopyTo(stream);
-
-            //    announcement.attachedFiles.Add(new FileDTO() { FileName = file.FileName, MimeType = file.ContentType, Data = stream.ToArray() });
-
-            //}
+           
             Console.WriteLine(dto.attachedFiles.Count);
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -103,40 +85,7 @@ namespace LMS.Services.Announcements
             Console.WriteLine("helllooo " + response.StatusCode);
             return response.IsSuccessStatusCode;
         }
-        //    public async Task<bool> addAnnouncementsOfClassAsync(string classId,string token,List<IFormFile> files,IFormCollection obj)
-        //    {
-        //        string url = GlobalInfo.addAnnouncementUrl;
-        //        url = url.Replace("[id]", classId.ToString());
-        //        MultipartFormDataContent content = new MultipartFormDataContent();
-        //        Console.WriteLine(url);
-        //        Console.WriteLine(files.Count);
-        //        Console.WriteLine(obj["Description"]);
-        //        byte[] fileBytes;
-        //        content.Add(new StringContent(obj["Title"]), "title");
-        //        content.Add(new StringContent(obj["Description"]), "Description");
-        //        content.Add(new StringContent(obj["DueDate"]), "dueDate");
-        //        content.Add(new StringContent(obj["announcementType"]), "announcementType");
-
-        //        foreach (IFormFile file in files)
-        //        {
-        //            if (file.Length > 0)
-        //            {
-        //                using (var ms = new MemoryStream())
-        //                {
-        //                    file.CopyTo(ms);
-        //                    fileBytes=ms.ToArray();
-        //                    content.Add(new ByteArrayContent(fileBytes,0, fileBytes.Length),"fileToUpload");
-
-        //                }
-        //            }
-        //        }
-        //        httpClient.DefaultRequestHeaders.Authorization= new AuthenticationHeaderValue("Bearer", token);
-        //        HttpResponseMessage response = await httpClient.PostAsJsonAsync(url,obj);
-
-        //        Console.WriteLine(response.StatusCode);
-
-        //        return response.IsSuccessStatusCode;
-        //    }
+       
     }
 
 }

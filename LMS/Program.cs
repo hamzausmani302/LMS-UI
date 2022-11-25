@@ -1,7 +1,10 @@
 using LMS.Services.Announcements;
 using LMS.Services.ClassesService;
+using LMS.Services.AssignmentsService;
 using LMS.Services.Login;
 using System.Text.Json.Serialization;
+using System.Reflection.PortableExecutable;
+using LMS.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,7 @@ builder.Services.AddSingleton<ILoginService, LoginService>();
 
 builder.Services.AddSingleton<IClassService, ClassService>();
 builder.Services.AddSingleton<IAnnouncementService, AnnouncementService>();
+builder.Services.AddSingleton<IAssignmentService, AssignmentService>();
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {
     opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -32,11 +36,18 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
+
+
+app.UseMiddleware<JWTMiddleWare>();
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}");
+
+
+
+
 
 app.Run();

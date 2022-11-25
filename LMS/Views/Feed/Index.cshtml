@@ -2,6 +2,8 @@
 @{
 
     ViewData["Title"] = "Feed Page";
+    string role = ViewData["role"] as string;
+    string fileDownloadUrl = ViewData["downloadUrl"] as string;
     List<AnnouncementResponse> announcements = ViewBag.Announcements;
     int classID = ViewBag.ClassID;
 
@@ -192,37 +194,20 @@
             <img class="mb-4"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU"
                 alt="" width="740" height="300">
-            <div class="card-body">
-                <h3>Information Security</h3>
-                <a href="@Url.Action("Index", "Announcement",new {id=classID},"https")" class="btn btn-primary">
-                    <span>
-                        <strong>Add Announcement</strong>
-                    </span>
-                </a>
-                <div class="d-flex justify-content-between align-items-center">
+           @if (role.ToLower() != "user")
+           {
+                <div class="card-body">
+                    <h3>Information Security</h3>
+                    <a href="@Url.Action("Index", "Announcement",new {id=classID},"https")" class="btn btn-primary">
+                        <span>
+                            <strong>Add Announcement</strong>
+                        </span>
+                    </a>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
                 </div>
-            </div>
-            <div class="container">
-                <form method="POST" action="/upload/1" enctype="multipart/form-data">
-                    <label for="title">TITLE</label>
-                    <input type="text" name="title" />
-                    <br />
-                    <label for="description">Description</label>
-                    <input type="text" name="description" />
-                    <br />
-                    <label for="announcementType">Type of Announcement</label>
-                    <input type="text" name="announcementType" />
-                    <br />
-                    <label for="dueDate">DueDate</label>
-                    <input type="date" name="dueDate" />
-                    <br />
-
-                    <label title="file upload : " for="fileToUpload" />
-                    <input type="file" name="fileToUpload" id="fileToUpload" />
-                    <input type="submit" />
-                </form>
-
-            </div>
+            }
+           
             <div class="social-footer"></div>
             @{
                 for (int i = 0; i < announcements.Count; i++)
@@ -253,7 +238,7 @@
                             @{
                                 foreach (AnnouncementFile file in announcements[i].announcementFiles)
                                 {
-                                    <a href="https://localhost:7064/api/user/Users/Files/tomorrow.txt">
+                                    <a href=@fileDownloadUrl.Replace("[id]" , file.Id.ToString())>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                                     class="bi bi-file-text" viewBox="0 0 16 16">
                                             <path
