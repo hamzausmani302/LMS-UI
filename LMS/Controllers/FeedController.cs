@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.IO;
 using LMS.DTOS.FileDto;
 using LMS.DTOS.Announcements;
+using LMS.Authorization;
 
 namespace LMS.Controllers
 {
@@ -56,13 +57,13 @@ namespace LMS.Controllers
 
         }
 
-
+        [Authorize]
         [HttpGet("[controller]/Feed/{id:int}")]
         public async Task<IActionResult> Index(int id)
         {
             //int.TryParse(id , out int classId);
             int classId = id;
-            Console.WriteLine($"myid=  {classId}");
+          
             if (classId == 0) {
                 throw new BadHttpRequestException("Invalid arguments provided");
             }
@@ -71,10 +72,12 @@ namespace LMS.Controllers
             if (Request.Cookies["token"] == null || Request.Cookies["sessionType"] == null) {
                 return Ok("unauthorized");
             }
+
+
+
             string token = Request.Cookies["token"].ToString();
             string identity = Request.Cookies["sessionType"].ToString();
-            /* try
-             {*/
+       
             var announcements = await announcementService.getAnnouncementsOfClass(classId, token, identity);
 
                 if (announcements != null && announcements.Count != 0)
@@ -86,13 +89,17 @@ namespace LMS.Controllers
 
                 Console.WriteLine(announcements.Count);
 
-                ViewBag.ClassID = id;
-                ViewBag.Announcements = announcements;
-            /*}
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-                return NotFound();
-            }*/
+         
+
+            string fileRedirectionUrl = GlobalInfo.getAnnouncementsFileDownloadUrl.Replace("[token]", token);
+            if (identity == "user") {
+                fileRedirectionUrl = GlobalInfo.getAnnouncementsFileDownloadUrlUser.Replace("[token]", token);
+            }
+            ViewData["downloadUrl"] = fileRedirectionUrl;
+            ViewBag.ClassID = id;
+            ViewBag.Announcements = announcements;
+            ViewData["role"] = identity;
+
             return View();
         }
     }

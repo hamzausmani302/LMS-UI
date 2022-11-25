@@ -1,4 +1,5 @@
-﻿using LMS.Models;
+﻿using LMS.Authorization;
+using LMS.Models;
 using LMS.Services.ClassesService;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -23,19 +24,19 @@ namespace LMS.Controllers
             return View(Path.Combine("/" , "Views" , "StartPage" , "StartPage.cshtml"));
         }
 
-
+       
         public IActionResult Index()
         {
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
         }
 
 
-
+        [Authorize]
         [HttpGet("teacher/Home")]
         public async Task<IActionResult> getClassesTeacher()
         {
@@ -51,7 +52,7 @@ namespace LMS.Controllers
             ViewBag.Class= res;
             return View(Path.Combine("/", "Views", "Home", "Index.cshtml"));
         }
-
+        [Authorize]
         [HttpGet("user/Home")]
         public async Task<IActionResult> getClassesUser()
         {
