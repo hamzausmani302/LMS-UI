@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QpyyEhBRNx6Cj61zque79fH56ebi6BixI/bIQ80ixZFUMHACXqP8ihb9wIFYxCAq0w/98msr36Hl8qo/zC5ijw==",
+  "dgSpecHash": "7iklBKDL17No9ap3MRqWSbpykQFTS6relavxABUdho52osHOUYZyCPLcy4Byqpi6b6RoFKU9OsfNRmko3Ffhlg==",
   "success": true,
   "projectFilePath": "E:\\dotnet work\\LMS\\LMS-UI\\LMS\\LMS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\dotnet.cookies\\1.0.0\\dotnet.cookies.1.0.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
@@ -57,6 +58,9 @@
     "C:\\Users\\DARK VADER\\.nuget\\packages\\nuget.projectmodel\\5.11.0\\nuget.projectmodel.5.11.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\nuget.protocol\\5.11.0\\nuget.protocol.5.11.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\nuget.versioning\\6.2.1\\nuget.versioning.6.2.1.nupkg.sha512",
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\peanutbutter.randomgenerators\\3.0.94\\peanutbutter.randomgenerators.3.0.94.nupkg.sha512",
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\peanutbutter.testutils.aspnetcore\\3.0.94\\peanutbutter.testutils.aspnetcore.3.0.94.nupkg.sha512",
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\peanutbutter.utils\\3.0.94\\peanutbutter.utils.3.0.94.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -141,7 +145,8 @@
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512",
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.json\\6.0.5\\system.text.json.6.0.5.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -152,5 +157,16 @@
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\DARK VADER\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DotNet.Cookies 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "DotNet.Cookies",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

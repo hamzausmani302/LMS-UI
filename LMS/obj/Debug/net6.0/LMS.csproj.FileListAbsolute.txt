@@ -747,3 +747,10 @@ E:\dotnet work\LMS\LMS-UI\LMS\obj\Debug\net6.0\scopedcss\projectbundle\LMS.bundl
 E:\dotnet work\LMS\LMS-UI\LMS\obj\Debug\net6.0\LMS.csproj.CopyComplete
 E:\dotnet work\LMS\LMS-UI\LMS\obj\Debug\net6.0\LMS.genruntimeconfig.cache
 E:\dotnet work\LMS\LMS-UI\LMS\obj\Debug\net6.0\ref\LMS.dll
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\DotNet.Cookies.dll
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\libman.json
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\PeanutButter.RandomGenerators.dll
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\PeanutButter.TestUtils.AspNetCore.dll
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\PeanutButter.Utils.dll
+E:\dotnet work\LMS\LMS-UI\LMS\bin\Debug\net6.0\System.Text.Json.dll
+E:\dotnet work\LMS\LMS-UI\LMS\obj\Debug\net6.0\LMS.MvcApplicationPartsAssemblyInfo.cs

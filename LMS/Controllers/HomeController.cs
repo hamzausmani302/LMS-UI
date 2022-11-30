@@ -1,6 +1,10 @@
 ﻿using LMS.Authorization;
+using LMS.DTOS.ClassesDTO;
+using LMS.DTOS.Courses;
+using LMS.Helpers.Exceptions;
 using LMS.Models;
 using LMS.Services.ClassesService;
+using LMS.Services.Courses;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
@@ -11,11 +15,13 @@ namespace LMS.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IClassService _classService;
+        private readonly ICourseService courseService;
 
-        public HomeController(ILogger<HomeController> logger, IClassService _service)
+        public HomeController(ILogger<HomeController> logger, IClassService _service , ICourseService courseService)
         {
             _logger = logger;
             _classService = _service;
+            this.courseService = courseService;
         }
 
         [HttpGet("/")]
@@ -34,6 +40,65 @@ namespace LMS.Controllers
         {
             return View();
         }
+
+
+        [HttpGet("user/enroll")]
+        public async Task<IActionResult> addUserToClass(string code) {
+            Console.WriteLine(code);
+            try
+            {
+                if (Request.Cookies["token"] == null) {
+                    return Forbid();
+                }
+
+                HttpResponseMessage response = await _classService.AddUserToClassUtils(code, Request.Cookies["token"]);
+                if (response.StatusCode == HttpStatusCode.NotFound) {
+                    return NotFound();
+                }
+
+                return Redirect("/user/Home");
+            }
+            catch (Exception err) {
+                
+                Console.WriteLine(err.Message);
+                return NotFound();
+            }
+            
+        
+        }
+
+        [Authorize]
+        [HttpGet("class/add")]
+        public async Task<IActionResult> addClassView()
+        {
+
+            //get list of courses
+            List<CourseDTO> courseList = await courseService.getCourses();
+            ViewBag.CourseList = courseList;
+
+
+
+
+
+            return View();
+        }
+        [Authorize]
+        [HttpPost("teacher/add/class")]
+        public async Task<IActionResult> addClassSubmitAction(AddClassDTO dto)
+        {
+
+            string token = HttpContext.Request.Cookies["token"] as string;
+
+            ClassDTO addedClass = await _classService.AddClass(dto, token);
+
+            if (addedClass == null)
+            {
+                ViewData["showAlert"] = "";
+                return View(Path.Combine("/", "Views", "Feed", "addClassView.cshtml"));
+            }
+            return Redirect("/teacher/Home");
+        }
+
 
 
         [Authorize]

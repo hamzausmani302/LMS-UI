@@ -3,7 +3,7 @@ using LMS.Services.Login;
 using Microsoft.AspNetCore.Mvc;
 using System.Buffers.Text;
 using System.Text.Json.Serialization;
-
+using System.Web;
 namespace LMS.Controllers
 {
     public class LoginController : Controller
@@ -68,7 +68,7 @@ namespace LMS.Controllers
             if (response == null || !response.IsSuccessStatusCode)
             {
                 ViewData["showAlert"] = true;
-                return View(Path.Combine("/", "Views", "Login", "Index.cshtml"));
+                return View(Path.Combine("/", "Views", "Login", "TeacherIndex.cshtml"));
             }
             AuthenticateResponse res = await response.Content.ReadFromJsonAsync<AuthenticateResponse>();
 
@@ -81,6 +81,16 @@ namespace LMS.Controllers
 
             //return View(Path.Combine("/" , "Views" , "Home", "Index.cshtml"));
             return Redirect("/teacher/Home");
+        }
+        [HttpGet("lms/logout")]
+        public IActionResult Logout() {
+
+            Response.Cookies.Delete("token");
+            Response.Cookies.Delete("sessionType");
+
+
+            return Redirect("/");
+        
         }
     }
 }

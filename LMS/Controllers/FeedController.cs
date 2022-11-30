@@ -11,6 +11,10 @@ using System.IO;
 using LMS.DTOS.FileDto;
 using LMS.DTOS.Announcements;
 using LMS.Authorization;
+using LMS.Services.Courses;
+using LMS.DTOS.Courses;
+using LMS.DTOS.ClassesDTO;
+using LMS.Services.ClassesService;
 
 namespace LMS.Controllers
 {
@@ -21,9 +25,17 @@ namespace LMS.Controllers
     {
 
         private readonly IAnnouncementService announcementService;
-        public FeedController(IAnnouncementService announcementService) {
+        private readonly ICourseService courseService;
+        private readonly IClassService classService;
+
+        private HttpClient httpClient;
+        public FeedController(IAnnouncementService announcementService , ICourseService courseService , IClassService classService) {
             this.announcementService = announcementService;
+            this.courseService = courseService;
+            this.classService = classService;
         }
+       
+    
 
         [HttpPost("upload/{id}")]
         public async Task<IActionResult> TestFileUpload(string id, [FromForm] AddAnnouncementDTO dto,  [FromForm] List<IFormFile> fileToUpload  ) {
