@@ -19,12 +19,6 @@ namespace LMS.DTOS.Courses
         public string CourseType { get; set; }
 
 
-      /*  public CourseDTO(Course course) { 
-            CourseID = course.CourseID;
-            CourseName = course.CourseName;
-            CourseDescription = course.CourseDescription;
-            CreditHours = course.CreditHours;
-            CourseType = course.courseType;
-        }*/
+     
     }
 }

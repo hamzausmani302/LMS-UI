@@ -1,0 +1,76 @@
+﻿@using LMS.DTOS.Courses;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+   
+*@
+@{
+    List<CourseDTO> courses = ViewBag.CourseList as List<CourseDTO>;
+    bool showAlert = ViewData["showAlert"] == null ? false : true;
+}
+
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Album example · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+
+
+
+
+
+    <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+    <h1 class="text-center"> ADD CLASS</h1>
+        <form method="POST" action="/teacher/add/class" enctype="multipart/form-data">
+        <div class="form-group row" style="margin-top:10px;">
+            <label for="section" class="col-sm-2 col-form-label">Section</label>
+            <div class="col-sm-10 mb-3">
+                <input type="text" class="form-control" name="section" placeholder="Section" required>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top:10px;">
+            <label for="startDate" class="col-sm-2 col-form-label">Date</label>
+            <div class="mb-3 col-sm-10">
+                <input type="datetime-local" class="form-control" name="startDate" placeholder="Annoucement Text" required></input>
+            </div>
+        </div>
+      
+        <div class="form-group row" style="margin-top:10px;">
+            <label class="col-sm-2 col-form-label" for="courseID">Course ID</label>
+            <div class="mb-3 col-sm-10">
+                <select class="custom-select" name="courseID" required>
+                    <option value="">Select</option>
+                    @foreach (var item in courses)
+                    {
+                        <option value=@item?.CourseID>@item?.CourseID - @item?.CourseName</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+       
+
+        <div class="form-group row" style="margin-top:15px;">
+            <div class="col-sm-10 flex-column justify-content-center align-content-center" >
+                <button type="submit" class="btn btn-primary w-50 ">Publish</button>
+            </div>
+        </div>
+    </form>
+
+    @if (showAlert) {
+        <div class="alert-danger">
+            Cannot create class try again.
+        </div>
+
+    }
+    </body>
+
+</html>

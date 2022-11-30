@@ -5,6 +5,7 @@ using LMS.Services.Login;
 using System.Text.Json.Serialization;
 using System.Reflection.PortableExecutable;
 using LMS.Authorization;
+using LMS.Services.Courses;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddSingleton<ILoginService, LoginService>();
 builder.Services.AddSingleton<IClassService, ClassService>();
 builder.Services.AddSingleton<IAnnouncementService, AnnouncementService>();
 builder.Services.AddSingleton<IAssignmentService, AssignmentService>();
+builder.Services.AddSingleton<ICourseService, CourseService>();
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {
     opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
