@@ -38,6 +38,7 @@ namespace LMS.Services.ClassesService
             return result;
         }
 
+
         public async Task<ClassDTO> AddClass(AddClassDTO dto , string token) {
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -55,5 +56,20 @@ namespace LMS.Services.ClassesService
 
 
         }
-     }
+     
+
+        public async Task<List<LMS.DTOS.Users.UserDTO>> GetUsers(string tokenvalue, int classId)
+        {
+            Console.WriteLine(tokenvalue+" #### "+ classId);
+            string url;
+
+            url = GlobalInfo.getClassEnrolledUsers.Replace("[id]", classId.ToString()); ;
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenvalue);
+            var result = await _httpClient.GetFromJsonAsync<List<LMS.DTOS.Users.UserDTO>>(url);
+            Console.WriteLine($"total users = {result.Count}");
+            return result;
+           
+        }
+    }
+
 }

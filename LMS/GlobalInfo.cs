@@ -18,9 +18,7 @@ namespace LMS
 
         public static string getAnnouncementUrl = $"{urlToConsume}/api/user/Users/annoucements/class/[id]";
         public static string getAnnouncementTeacherUrl = $"{urlToConsume}/api/teacher/Teacher/annoucements/class/[id]";
-        //public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/announcement/add/[id]";
-        //public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/class/[id]";
-        public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/web/class/[id]";
+    public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/web/class/[id]";
 
 
         //class
@@ -29,12 +27,12 @@ namespace LMS
         public static string addClassUrl = $"{urlToConsume}/api/teacher/Teacher/class/add";
         public static string enrollClassUrl = $"{urlToConsume}/api/user/Users/add/class/web/[id]";
 
-        //public static string addAnnouncementUrl = $"{urlToConsume}/api/teacher/Teacher/upload/web/class/[id]";
-
+   
         public static string addSubmissionFileUrl = $"{urlToConsume}/api/user/Users/upload/web/assignment/[id]";
 
         public static string getSubmissionFileUrl = $"{urlToConsume}/api/user/Users/assignments/[id]";
 
+        public static string getClassEnrolledUsers= $"{urlToConsume}/api/teacher/Teacher/class/students/[id]";
 
 
         

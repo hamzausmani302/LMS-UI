@@ -9,8 +9,12 @@ namespace LMS.Services.ClassesService
         
         public Task<List<Class>> GetClasses(string tokenvalue , bool isUser = true);
 
+
         public Task<ClassDTO> AddClass(AddClassDTO dto , string token);
 
         public Task<HttpResponseMessage> AddUserToClassUtils(string code, string token);
+
+        public Task<List<UserDTO>> GetUsers(string tokenvalue, int classId);
+
     }
 }
