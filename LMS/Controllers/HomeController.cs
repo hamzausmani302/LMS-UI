@@ -128,7 +128,7 @@ namespace LMS.Controllers
                 return new ObjectResult("User not authorized") { StatusCode = (int)HttpStatusCode.Forbidden };
             }
             var res = await _classService.GetClasses(tokenvalue);
-            Console.WriteLine($"couynt = {res.Count} info = {res[0].Id}");
+            //Console.WriteLine($"couynt = {res.Count} info = {res[0].Id}");
             if (res != null) {
                 ViewBag.Class = res;
 

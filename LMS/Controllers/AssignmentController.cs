@@ -54,13 +54,8 @@ namespace LMS.Controllers
                     Console.WriteLine(err.Message);
                 }
  
-
-            
-
-
-
             string status = (files == null || files.Count == 0) ? "Due" : "Submitted";
-
+                    
             ViewData["status"] = status;
             ViewData["downloadUrl"] = GlobalInfo.getSubmissionFileDownloadUrlUser.Replace("[token]", token);
             ViewBag.AssignmentFiles = files;

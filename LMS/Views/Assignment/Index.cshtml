@@ -85,8 +85,31 @@
         padding: 10px 19px;
         cursor: pointer;
     }
+
+    .backbutton {
+        background: #1D6C9B;
+        border-radius: 999px;
+        box-shadow: #1D6C9B 0 10px 20px -10px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        opacity: 1;
+        outline: 0 solid transparent;
+        padding: 8px 18px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: fit-content;
+        word-break: break-word;
+        border: 0;
+    }
     </style>
 <div class="row d-flex justify-content-center mt-100">
+    <button onclick="history.back()" class="backbutton">Go Back</button>
     <div id="success" style="display:none;" class="container bg-success justify-content-center text-center">
             successfully submitted      
     </div>
@@ -140,15 +163,17 @@
 
 
             </div>
-
-            <div class="card-block">
-              <form method="POST" action="/Assignment/upload/@announcementId" enctype="multipart/form-data" >
+            @if (submittedFiles.Count() == 0)
+            {
+                <div class="card-block">
+                    <form method="POST" action="/Assignment/upload/@announcementId" enctype="multipart/form-data" >
                   <input  type="file" name="assignmentFiles" multiple/>
                   <input type="submit"/>
 
               </form>
                 
             </div>
+            }
         </div>
 
 

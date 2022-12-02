@@ -8,7 +8,7 @@ namespace LMS
         public static string liveUrl = "https://ipt-lms-1.herokuapp.com";
         public static string azureUrl = "https://learningmanagementsystem-ipt.azurewebsites.net";
 
-        public static string urlToConsume = apiUrl;
+        public static string urlToConsume = azureUrl;
         public static string userLoginUrl = $"{urlToConsume}/api/user/Users/Login";
         public static string teacherLoginUrl = $"{urlToConsume}/api/teacher/Teacher/Login";
 
