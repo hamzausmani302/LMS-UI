@@ -1,18 +1,22 @@
 ﻿@using LMS.DTOS.Announcements;
 @{
-  
+
     ViewData["Title"] = "Feed Page";
+    string role = ViewData["role"] as string;
+    string fileDownloadUrl = ViewData["downloadUrl"] as string;
     List<AnnouncementResponse> announcements = ViewBag.Announcements;
+    int classID = ViewBag.ClassID;
 
 }
 
 <!doctype html>
 <html lang="en">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 <style>
     body {
         margin-top: 20px;
     }
+
     /* Social feed */
     .social-feed-separated .social-feed-box {
         margin-left: 62px;
@@ -23,11 +27,11 @@
         padding: 0;
     }
 
-        .social-feed-separated .social-avatar img {
-            width: 52px;
-            height: 52px;
-            border: 1px solid #e7eaec;
-        }
+    .social-feed-separated .social-avatar img {
+        width: 52px;
+        height: 52px;
+        border: 1px solid #e7eaec;
+    }
 
     .social-feed-separated .social-feed-box .social-avatar {
         padding: 15px 15px 0 15px;
@@ -46,15 +50,15 @@
         border-bottom: none;
     }
 
-        .article .social-feed-box:last-child {
-            margin-bottom: 0;
-            border-bottom: 1px solid #e7eaec;
-        }
+    .article .social-feed-box:last-child {
+        margin-bottom: 0;
+        border-bottom: 1px solid #e7eaec;
+    }
 
-        .article .social-feed-box p {
-            font-size: 13px;
-            line-height: 18px;
-        }
+    .article .social-feed-box p {
+        font-size: 13px;
+        line-height: 18px;
+    }
 
     .social-action {
         margin: 15px;
@@ -83,9 +87,9 @@
         padding: 15px;
     }
 
-        .social-body img {
-            margin-bottom: 10px;
-        }
+    .social-body img {
+        margin-bottom: 10px;
+    }
 
     .social-footer {
         border-top: 1px solid #e7eaec;
@@ -93,10 +97,10 @@
         background: #f9f9f9;
     }
 
-        .social-footer .social-comment img {
-            width: 32px;
-            margin-right: 10px;
-        }
+    .social-footer .social-comment img {
+        width: 32px;
+        margin-right: 10px;
+    }
 
     .social-comment:first-child {
         margin-top: 0;
@@ -106,12 +110,13 @@
         margin-top: 15px;
     }
 
-        .social-comment textarea {
-            font-size: 12px;
-        }
+    .social-comment textarea {
+        font-size: 12px;
+    }
 
 
-    .form-control, .single-line {
+    .form-control,
+    .single-line {
         background-color: #FFFFFF;
         background-image: none;
         border: 1px solid #e5e6e7;
@@ -132,22 +137,22 @@
         padding: 0;
     }
 
-        .ibox.collapsed .ibox-content {
-            display: none;
-        }
+    .ibox.collapsed .ibox-content {
+        display: none;
+    }
 
-        .ibox.collapsed .fa.fa-chevron-up:before {
-            content: "\f078";
-        }
+    .ibox.collapsed .fa.fa-chevron-up:before {
+        content: "\f078";
+    }
 
-        .ibox.collapsed .fa.fa-chevron-down:before {
-            content: "\f077";
-        }
+    .ibox.collapsed .fa.fa-chevron-down:before {
+        content: "\f077";
+    }
 
-        .ibox:after,
-        .ibox:before {
-            display: table;
-        }
+    .ibox:after,
+    .ibox:before {
+        display: table;
+    }
 
     .ibox-title {
         -moz-border-bottom-colors: none;
@@ -182,65 +187,169 @@
         background: #ffffff;
         padding: 10px 15px;
     }
+
+    .button-34 {
+        background: #5E5DF0;
+        border-radius: 999px;
+        box-shadow: #5E5DF0 0 10px 20px -10px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        opacity: 1;
+        outline: 0 solid transparent;
+        padding: 8px 18px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: fit-content;
+        word-break: break-word;
+        border: 0;
+    }
+
+    .backbutton {
+        background: #1D6C9B;
+        border-radius: 999px;
+        box-shadow: #1D6C9B 0 10px 20px -10px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        opacity: 1;
+        outline: 0 solid transparent;
+        padding: 8px 18px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: fit-content;
+        word-break: break-word;
+        border: 0;
+    }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+   
+</script>
 <div class="container">
+    <button onclick="history.back()" class="backbutton"><strong>Go Back</strong></button>
     <div class="col-md-7">
         <div class="card shadow-sm">
-            <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU" alt="" width="740" height="300">
-            <div class="card-body">
-                <h3>Information Security</h3>
-                <div class="d-flex justify-content-between align-items-center">
+            <img class="mb-4"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU"
+                alt="" width="740" height="300">
+           @if (role.ToLower() != "user")
+           {
+                 <div class="card-body">
+                @*<h2 class="align-items-center d-flex justify-content-center">Information Security</h2>*@
+                <h1>Information Security</h1>
+               
+                <div class="d-flex justify-content-between align-items-center" style="margin-top:40px">
+                    <a href=@Url.Action("Index", "Announcement",new {id=classID},"https") class="btn button-34">
+                        <span>
+                            <strong>Add Announcement</strong>
+                        </span>
+                    </a>
+                    <a href=@Url.Action("Index", "UserList",new {id=classID},"https") class="btn button-34">
+                        <span>
+                            <strong>View People</strong>
+                        </span>
+                    </a>
+                </div>
+            </div>   
+            }
+            <div class="container">
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="social-footer"></div>
             @{
                 for (int i = 0; i < announcements.Count; i++)
                 {
-                        <div class="social-feed-box">
+                                            <div class="social-feed-box">
 
-                            <div class="social-avatar">
-                                <a href="" class="pull-left">
-                                    <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                </a>
-                                <div class="media-body">
-                                    <a>
-                                        @announcements[i].Class?.instructor?.Name?.ToUpper()
-                                    </a>
-                                    <small class="text-muted"> @announcements[i].CreatedAt </small>
-                                </div>
-                            </div>
-                            <div class="social-body">
-                                <p>
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy. Packages and web page editors now use Lorem Ipsum as their
-                                    default model text.
-                                    <br />
-                                    @announcements[i].Description
+                                                <div class="social-avatar">
+                                                    <a href="" class="pull-left">
+                                                        <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <a>
+                                                            @announcements[i].Class?.instructor?.Name?.ToUpper()
+                                                        </a>
+                                                        <small class="text-muted"> @announcements[i].CreatedAt </small>
+                                                    </div>
+                                                </div>
+                                                <div class="social-body">
+                                                    <p>
+                                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                                                        default model text, and a search for 'lorem ipsum' will uncover many web sites still
+                                                        in their infancy. Packages and web page editors now use Lorem Ipsum as their
+                                                        default model text.
+                                                        <br />
+                                                        @announcements[i].Description
 
-                                </p>
-                                @{foreach(AnnouncementFile file in announcements[i].announcementFiles){
-                                    <a href="https://localhost:7064/api/user/Users/Files/tomorrow.txt">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                            </svg>
-                                        </a>
-                            }
+                                                    </p>
+                                                    @{
+                                foreach (AnnouncementFile file in announcements[i].announcementFiles)
+                                {
+                                                                                    <a href=@fileDownloadUrl.Replace("[id]" , file.Id.ToString())>
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                                                                                    class="bi bi-file-text" viewBox="0 0 16 16">
+                                                                                            <path
+                                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                            <path
+                                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                        </svg>
+                                                                                    </a>
                                 }
-                                    </div>
-                            @Html.ActionLink("View Assignment"
+                                                    }
+                                                </div>
+                                                @{
+                            if (announcements[i].announcementType == "ASSIGNMENT")
+                            {
+                                                                                @Html.ActionLink("View Assignment"
                 ,"Index"
                 ,"Assignment"
-                ,null
+                ,new {Id = announcements[i].AnnouncementId}
                 ,new {@class="btn btn-sm btn-outline-secondary"}
                 )
-                        </div>
-                        <div class="social-footer"></div>
-            
+                            }
+
+
+                                                }
+                                            </div>
+                                            <div class="social-footer"></div>
+
                 }
             }
         </div>
     </div>
 </div>
+
 </html>

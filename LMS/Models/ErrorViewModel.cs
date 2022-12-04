@@ -1,3 +1,4 @@
+using LMS.Helpers.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -29,9 +30,13 @@ namespace LMS.Models
             {
                 ExceptionMessage = "Dictionay not foun ";
             }
-            else if (exceptionHandlerPathFeature?.Error is NotFoundResult) {
+            else if (exceptionHandlerPathFeature?.Error is NotFoundResult)
+            {
                 ExceptionMessage = "user not found";
 
+            }
+            else if (exceptionHandlerPathFeature?.Error is APIError) {
+                ExceptionMessage = "Unexpected Error occured";
             }
 
             if (exceptionHandlerPathFeature?.Path == "/")

@@ -1,0 +1,186 @@
+﻿@using LMS.DTOS.Announcements;
+@using LMS.Helpers;
+@{
+    ViewData["Title"] = "Assignment Page";
+    string showPopUp = ViewData["showPopUp"] as string;
+    string status = ViewData["status"] as string;
+    List<AssignmentFilesDTO> submittedFiles = ViewBag.AssignmentFiles != null ? ViewBag.AssignmentFiles : new List<AssignmentFilesDTO>();
+    int announcementId = (int)ViewData["announcementId"];
+    string downloadUrl = ViewData["downloadUrl"] as string;
+
+}
+<!doctype html>
+<html lang="en">
+    <style>
+    body {
+        background-color: #f2f7fb;
+    }
+
+    .mt-100 {
+        margin-top: 100px;
+    }
+
+    .card {
+        border-radius: 5px;
+        -webkit-box-shadow: 0 0 5px 0 rgba(43,43,43,.1), 0 11px 6px -7px rgba(43,43,43,.1);
+        box-shadow: 0 0 5px 0 rgba(43,43,43,.1), 0 11px 6px -7px rgba(43,43,43,.1);
+        border: none;
+        margin-bottom: 30px;
+        -webkit-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+    }
+
+        .card .card-header {
+            background-color: transparent;
+            border-bottom: none;
+            padding: 20px;
+            position: relative;
+        }
+
+            .card .card-header h5:after {
+                content: "";
+                background-color: #d2d2d2;
+                width: 101px;
+                height: 1px;
+                position: absolute;
+                bottom: 6px;
+                left: 20px;
+            }
+
+        .card .card-block {
+            padding: 1.25rem;
+        }
+
+    .dropzone.dz-clickable {
+        cursor: pointer;
+    }
+
+    .dropzone {
+        min-height: 150px;
+        border: 1px solid rgba(42,42,42,0.05);
+        background: rgba(204,204,204,0.15);
+        padding: 20px;
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px 0 rgba(43,43,43,0.1);
+        box-shadow: inset 0 0 5px 0 rgba(43,43,43,0.1);
+    }
+
+    .m-t-20 {
+        margin-top: 20px;
+    }
+
+    .btn-primary, .sweet-alert button.confirm, .wizard > .actions a {
+        background-color: #4099ff;
+        border-color: #4099ff;
+        color: #fff;
+        cursor: pointer;
+        -webkit-transition: all ease-in .3s;
+        transition: all ease-in .3s;
+    }
+
+    .btn {
+        border-radius: 2px;
+        text-transform: capitalize;
+        font-size: 15px;
+        padding: 10px 19px;
+        cursor: pointer;
+    }
+
+    .backbutton {
+        background: #1D6C9B;
+        border-radius: 999px;
+        box-shadow: #1D6C9B 0 10px 20px -10px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        opacity: 1;
+        outline: 0 solid transparent;
+        padding: 8px 18px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: fit-content;
+        word-break: break-word;
+        border: 0;
+    }
+    </style>
+<div class="row d-flex justify-content-center mt-100">
+    <button onclick="history.back()" class="backbutton">Go Back</button>
+    <div id="success" style="display:none;" class="container bg-success justify-content-center text-center">
+            successfully submitted      
+    </div>
+    <div id="danger" style="display:none;" class="container bg-danger justify-content-center text-center">
+             Error occured
+    </div>
+
+    ASSIGNMENT ID : @announcementId
+
+        @if (showPopUp == "true") { 
+            
+            <script>
+           $("#success").show(); 
+            setTimeout(()=>{
+                $("#success").hide();
+
+            },3000)
+       </script>
+
+    }else if(showPopUp == "false"){
+        <script>
+            $("#danger").show();
+            setTimeout(() => {
+                $("#danger").hide();
+
+            }, 3000)
+            </script>
+        }else{
+            
+        }
+    <div class="col-md-8">
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Assignment Submission</h4>
+                <p> Status : @status</p>
+            </div>
+
+            <div class="container bg-light row">
+                @foreach (var item in submittedFiles)
+                {
+                    <a href=@downloadUrl.Replace("[id]" , item.ID.ToString())>
+                        <div class="col-6">
+                            @item.FileName
+                            <br />
+                            @item.MimeType
+                        </div>
+                        <br />
+                    </a>
+                }
+
+
+            </div>
+            @if (submittedFiles.Count() == 0)
+            {
+                <div class="card-block">
+                    <form method="POST" action="/Assignment/upload/@announcementId" enctype="multipart/form-data" >
+                  <input  type="file" name="assignmentFiles" multiple/>
+                  <input type="submit"/>
+
+              </form>
+                
+            </div>
+            }
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+</html>
