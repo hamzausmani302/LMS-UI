@@ -240,12 +240,12 @@
    
 </script>
 <div class="container">
-    <button onclick="history.back()" class="backbutton"><strong>Go Back</strong></button>
+    <button onclick="history.back()" class="backbutton" style="margin-bottom:20px"><strong>Go Back</strong></button>
     <div class="col-md-7">
         <div class="card shadow-sm">
             <img class="mb-4"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU"
-                alt="" width="740" height="300">
+                alt="" height="300">
            @if (role.ToLower() != "user")
            {
                  <div class="card-body">
@@ -306,15 +306,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="social-body">
+                                                <strong>
                                                     <p>
-                                                        Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                                        default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                                        in their infancy. Packages and web page editors now use Lorem Ipsum as their
-                                                        default model text.
-                                                        <br />
-                                                        @announcements[i].Description
+
+                                            @announcements[i].Title
+                                                       
 
                                                     </p>
+                                </strong>
+                                                    <hr/>
+                                                    <p>
+                                            @announcements[i].Description
+                                                    </p>
+
                                                     @{
                                 foreach (AnnouncementFile file in announcements[i].announcementFiles)
                                 {

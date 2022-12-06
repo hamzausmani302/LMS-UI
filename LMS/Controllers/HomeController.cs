@@ -113,7 +113,8 @@ namespace LMS.Controllers
             }
            
                 var res = await _classService.GetClasses(tokenvalue , false);
-           
+            List<CourseDTO> courseList = await courseService.getCourses();
+            ViewBag.CourseList = courseList;
             ViewBag.Class= res;
             return View(Path.Combine("/", "Views", "Home", "Index.cshtml"));
         }

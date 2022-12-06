@@ -15,6 +15,7 @@ namespace LMS.DTOS.ClassesDTO
 
         public DateTime startDate { get; set; }
 
+        public string ClassCode { get; set; }
 
         public ClassDTO(Class _class){
             Id = _class.Id;
