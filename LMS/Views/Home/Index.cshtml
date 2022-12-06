@@ -1,7 +1,10 @@
-﻿@{
+﻿@using LMS.DTOS.Courses;
+@{
     ViewData["Title"] = "Home Page";
     string sessionType = Context.Request.Cookies["sessionType"] == null ? "user" : Context.Request.Cookies["sessionType"];
     List<Class> data= (List<Class>)ViewBag.Class;
+    List<CourseDTO> courses = ViewBag.CourseList as List<CourseDTO>;
+    bool showAlert = ViewData["showAlert"] == null ? false : true;
 }
 
 <!doctype html>
@@ -78,6 +81,66 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+          .Addbutton {
+            background: #1D6C9B;
+            border-radius: 999px;
+            box-shadow: #1D6C9B 0 10px 20px -10px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            opacity: 1;
+            outline: 0 solid transparent;
+            padding: 8px 18px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: fit-content;
+            word-break: break-word;
+            border: 0;
+        }
     </style>
 
    
@@ -90,14 +153,70 @@
 
     <div class="container">
                 @if (sessionType == "teacher") { 
-                    <div class="btn btn-light"> @Html.ActionLink("+  Add Class" , "addClassView" , "Home")</div>
+                    @*<div class="btn btn-light"> @Html.ActionLink("+  Add Class" , "addClassView" , "Home")</div>*@
+                    <!-- Trigger/Open The Modal -->
+                    <button id="myBtn" class="btn Addbutton" style="margin-bottom:20px;">Add Class</button>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h1 class="text-center"> ADD CLASS</h1>
+                            <form method="POST" action="/teacher/add/class" enctype="multipart/form-data">
+                                <div class="form-group row" style="margin-top:10px;">
+                                    <label for="section" class="col-sm-2 col-form-label">Section</label>
+                                    <div class="col-sm-10 mb-3">
+                                        <input type="text" class="form-control" name="section" placeholder="Section" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-top:10px;">
+                                    <label for="startDate" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="mb-3 col-sm-10">
+                                        <input type="datetime-local" class="form-control" name="startDate" placeholder="Annoucement Text" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="margin-top:10px;">
+                                    <label class="col-sm-2 col-form-label" for="courseID">Course ID</label>
+                                    <div class="mb-3 col-sm-10">
+                                        <select class="custom-select" name="courseID" required>
+                                            <option value="">Select</option>
+                                            @foreach (var item in courses)
+                                            {
+                                                <option value=@item?.CourseID>@item?.CourseID - @item?.CourseName</option>
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row" style="margin-top:15px;">
+                                    <div class="col-sm-10 flex-column justify-content-center align-content-center">
+                                        <button type="submit" class="btn btn-primary w-50 ">Publish</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            @if (showAlert)
+                            {
+                                <div class="alert-danger">
+                                    Cannot create class try again.
+                                </div>
+
+                            }
+                        </div>
+                       
+                    </div>
 
                 }else{
-                    <div class="btn btn-light">
-                        <button onclick="clickhandler()">CLICK ME</button>
+                    <div >
+                        <button onclick="clickhandler()" class="btn btn-dark" style="margin-bottom:20px;">Join Class</button>
 
                     </div>
-                    <h2>Enter class code</h2>
+                    
                     <form id="hidden-div" action="/user/enroll" >
                      
                         <input type="text" name="code" id="codebox" class="input-group-text" placeholder="enter code" />
@@ -108,28 +227,33 @@
           @*<h1>@data[0].Course.CourseName</h1>*@
           @{foreach(Class card in data)
 {           
-                                                                                                                                                    <div class="col">
-                                                                                                                                                        <div class="card shadow-sm">
-                                                                                                                                                            <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU" alt="" width="410" height="225">
+                                    <div class="col">
+                                        <div class="card shadow-sm">
+                                            <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU" alt=""  height="225">
 
-                                                                                                                                                            <div class="card-body">
-                                                                                                                                                <h3>@card.Course.CourseName</h3>
-                                                                                                                                                <p class="card-text">@card.Instructor.Name</p>
-                                                                                                                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                                                                                                                    <div class="btn-group">
-                                                                                                                                                        <div class="btn-group">
-                                                                                                                                                            @Html.ActionLink("View"
-                                            ,"Index"
-                                            ,"Feed"
-                                            , new {id=card.Id}
-                                            ,new {@class="btn btn-sm btn-outline-secondary"}
-                                            )
-                                                                                                                                                        </div>
-                                                                                                                                                                    </div>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>
-                                                                                                                                                        </div>
-                                                                                                                                                    </div>
+                                            <div class="card-body">
+                                <h3>@card?.Course?.CourseName</h3>
+
+                                            @if (sessionType == "teacher"){
+                               <strong><p style="color:gray;">Class Code: @card?.ClassCode</p></strong>
+                                        }
+                               <p class="card-text">@card?.Instructor?.Name</p>
+
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                        <div class="btn-group">
+                                            @Html.ActionLink("View"
+                ,"Index"
+                ,"Feed"
+                , new {id=card.Id}
+                ,new {@class="btn btn-sm btn-outline-secondary"}
+                )
+                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 }
 }  
     </div>
@@ -156,7 +280,30 @@
                 console.log("roggeld");
             });
         }
-      
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 
 
     </script>

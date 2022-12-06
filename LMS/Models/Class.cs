@@ -11,7 +11,8 @@ namespace LMS.Models
         public string? CourseID { get; set; }
         public virtual Course? Course { get; set; }         //Navigation attributes
 
-      
+        public string? ClassCode { get; set; }
+
         public string? InstructorId { get; set; }
         public virtual Instructor Instructor { get; set; }      //Navigation attributes
 
