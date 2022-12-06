@@ -255,7 +255,7 @@
                         @if (role.ToLower() != "user")
                         {
                 <div class="d-flex justify-content-between align-items-center" style="margin-top:40px">
-                    <a href=@Url.Action("Index", "Announcement",new {id=classID},"https") class="btn button-34">
+                    <a href=@Url.Action("Index", "Announcement",new {id=classID , coursename=coursename},"https") class="btn button-34">
                         <span>
                             <strong>Add Announcement</strong>
                         </span>
