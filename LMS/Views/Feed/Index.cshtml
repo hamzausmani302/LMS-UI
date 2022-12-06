@@ -246,12 +246,12 @@
             <img class="mb-4"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_QgGmcKOiQdyWnMD_0iNqQ7XivTr5Vm8g&usqp=CAU"
                 alt="" height="300">
-           @if (role.ToLower() != "user")
-           {
+          
                  <div class="card-body">
                 @*<h2 class="align-items-center d-flex justify-content-center">Information Security</h2>*@
-                <h1>Information Security</h1>
-               
+                <h1>@announcements[0]?.Class?.Course?.CourseName</h1>
+                        @if (role.ToLower() != "user")
+                        {
                 <div class="d-flex justify-content-between align-items-center" style="margin-top:40px">
                     <a href=@Url.Action("Index", "Announcement",new {id=classID},"https") class="btn button-34">
                         <span>
@@ -264,8 +264,9 @@
                         </span>
                     </a>
                 </div>
+                        }
             </div>   
-            }
+            
             <div class="container">
             
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
