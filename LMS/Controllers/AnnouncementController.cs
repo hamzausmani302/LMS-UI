@@ -21,17 +21,18 @@ namespace LMS.Controllers
         }
 
         [Authorize]
-        [HttpGet("[controller]/Announcement/{id:int}")]
+        [HttpGet("[controller]/Announcement/{id:int}/{coursename}")]
         
-        public IActionResult Index(int id)
+        public IActionResult Index(int id , string coursename)
         {
             Console.WriteLine($"classID {id}");
+            ViewData["coursename"] = coursename;
             return View();
         }
         [Authorize]
-        [HttpPost("/teacher/announcement/{id}")]
+        [HttpPost("/teacher/announcement/{id}/{coursename}")]
         //[ValidateAntiForgeryToken]
-        public IActionResult addAnnouncement(string id, [FromForm] AddAnnouncementDTO dto, [FromForm] List<IFormFile> fileToUpload)
+        public IActionResult addAnnouncement(string id , string coursename, [FromForm] AddAnnouncementDTO dto, [FromForm] List<IFormFile> fileToUpload)
         {
             
             Console.WriteLine($"in announcement controller with classID {id}");
@@ -64,7 +65,7 @@ namespace LMS.Controllers
             Console.WriteLine(announcementService.addAnnouncementsOfClassAsync(id, token, announcement, fileToUpload));
 
 
-            return Redirect($"/Feed/feed/{id}");
+            return Redirect($"/Feed/feed/{id}/{coursename}");
         }
 
     }
