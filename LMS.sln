@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS", "LMS\LMS.csproj", "{05CB2AB9-317E-4A68-B468-A2541B0604A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS", "LMS\LMS.csproj", "{05CB2AB9-317E-4A68-B468-A2541B0604A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Tests", "LMS.Tests\LMS.Tests.csproj", "{67848686-A3EF-48C8-A352-4F64F7B39659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{05CB2AB9-317E-4A68-B468-A2541B0604A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CB2AB9-317E-4A68-B468-A2541B0604A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CB2AB9-317E-4A68-B468-A2541B0604A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67848686-A3EF-48C8-A352-4F64F7B39659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67848686-A3EF-48C8-A352-4F64F7B39659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67848686-A3EF-48C8-A352-4F64F7B39659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67848686-A3EF-48C8-A352-4F64F7B39659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

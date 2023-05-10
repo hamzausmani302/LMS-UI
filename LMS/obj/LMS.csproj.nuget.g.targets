@@ -2,5 +2,6 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.text.json\6.0.5\build\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\6.0.5\build\System.Text.Json.targets')" />
+    <Import Project="$(NuGetPackageRoot)selenium.chrome.webdriver\85.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('$(NuGetPackageRoot)selenium.chrome.webdriver\85.0.0\build\Selenium.Chrome.WebDriver.targets')" />
   </ImportGroup>
 </Project>
