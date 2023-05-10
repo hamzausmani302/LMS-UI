@@ -1682,6 +1682,25 @@
           }
         }
       },
+      "Selenium.Chrome.WebDriver/85.0.0": {
+        "type": "package",
+        "build": {
+          "build/Selenium.Chrome.WebDriver.targets": {}
+        }
+      },
+      "Selenium.WebDriver/3.5.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/WebDriver.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/WebDriver.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5353,6 +5372,34 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "Selenium.Chrome.WebDriver/85.0.0": {
+      "sha512": "wRg7it2bBMyYtOsarTy0bWtS2fCZI08KGTef2kH381DYpGP+wX8j6f/7ABv1nmrUj5CCVmTeDeYeXS5g00JXSw==",
+      "type": "package",
+      "path": "selenium.chrome.webdriver/85.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Selenium.Chrome.WebDriver.targets",
+        "driver/chromedriver.exe",
+        "selenium.chrome.webdriver.85.0.0.nupkg.sha512",
+        "selenium.chrome.webdriver.nuspec"
+      ]
+    },
+    "Selenium.WebDriver/3.5.2": {
+      "sha512": "WIk71dD2lTXtZLALV68WGWqtNPOQ5HrpItrqzkRCKoH0YozU1zXydHWRD0jm8w1m9JAsfs6qPO/DhpP+0lEEtw==",
+      "type": "package",
+      "path": "selenium.webdriver/3.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/WebDriver.dll",
+        "lib/net35/WebDriver.xml",
+        "lib/net40/WebDriver.dll",
+        "lib/net40/WebDriver.xml",
+        "selenium.webdriver.3.5.2.nupkg.sha512",
+        "selenium.webdriver.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -9157,7 +9204,9 @@
     "net6.0": [
       "DotNet.Cookies >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.10",
-      "PeanutButter.TestUtils.AspNetCore >= 3.0.94"
+      "PeanutButter.TestUtils.AspNetCore >= 3.0.94",
+      "Selenium.Chrome.WebDriver >= 85.0.0",
+      "Selenium.WebDriver >= 3.5.2"
     ]
   },
   "packageFolders": {
@@ -9166,11 +9215,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\dotnet work\\IPT projects\\LMS-UI\\LMS\\LMS.csproj",
+      "projectUniqueName": "E:\\dotnet work\\LMS\\lms-UI-2\\LMS-UI\\LMS\\LMS.csproj",
       "projectName": "LMS",
-      "projectPath": "E:\\dotnet work\\IPT projects\\LMS-UI\\LMS\\LMS.csproj",
+      "projectPath": "E:\\dotnet work\\LMS\\lms-UI-2\\LMS-UI\\LMS\\LMS.csproj",
       "packagesPath": "C:\\Users\\DARK VADER\\.nuget\\packages\\",
-      "outputPath": "E:\\dotnet work\\IPT projects\\LMS-UI\\LMS\\obj\\",
+      "outputPath": "E:\\dotnet work\\LMS\\lms-UI-2\\LMS-UI\\LMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DARK VADER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9210,6 +9259,14 @@
           "PeanutButter.TestUtils.AspNetCore": {
             "target": "Package",
             "version": "[3.0.94, )"
+          },
+          "Selenium.Chrome.WebDriver": {
+            "target": "Package",
+            "version": "[85.0.0, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[3.5.2, )"
           }
         },
         "imports": [
@@ -9242,6 +9299,16 @@
       "warningLevel": 1,
       "message": "Package 'DotNet.Cookies 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "DotNet.Cookies",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Selenium.WebDriver 3.5.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Selenium.WebDriver",
       "targetGraphs": [
         "net6.0"
       ]
